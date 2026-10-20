@@ -10,7 +10,8 @@
   "build": "tsc -b && vite build",
   "lint": "oxlint",
   "preview": "vite preview",
-  "predeploy": "npm run build"
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
 },
 
   "dependencies": {
