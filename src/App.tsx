@@ -92,19 +92,23 @@ function App() {
     return () => subscription.unsubscribe();
   }, []);
 
-  // --- FETCH ENTRIES ---
+
+  // --- FETCH ENTRIES (Only when user is logged in) ---
   useEffect(() => {
     if (!user) {
       setEntries([]);
       return;
     }
 
+    // Save the ID to a constant so TypeScript knows it's safe
+    const currentUserId = user.id;
+
     async function fetchEntries() {
       setLoading(true);
       const { data, error } = await supabase
         .from("entries")
         .select("*")
-        .eq("user_id", user.id)
+        .eq("user_id", currentUserId) // <--- Now it uses the constant
         .order("date", { ascending: false })
         .order("id", { ascending: false });
 
