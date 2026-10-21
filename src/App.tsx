@@ -153,7 +153,7 @@ function App() {
 
     // For local testing, this will log the link to the console instead of sending an email
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: window.location.origin, // Change this to your GitHub Pages URL for production
+      redirectTo: "https://ainsteen01.github.io/personal_diary/", // Change this to your GitHub Pages URL for production
     });
 
     if (error) {
